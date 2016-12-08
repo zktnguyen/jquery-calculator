@@ -38,7 +38,6 @@ $(function(){
         evaluate();
         operation = op;
       }
-      flag = true;
     }
     else {
       switch(op){
@@ -60,7 +59,7 @@ $(function(){
           break;
       }
     }
-
+    flag = true;
   }
   function evaluate(){
     operand2 = parseFloat(stringNum);
