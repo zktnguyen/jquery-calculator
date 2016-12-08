@@ -11,7 +11,6 @@ $(function(){
   var flag = false;
   inputs.on('click', function(e){
     var target = $(e.target);
-    console.log(target);
     if (target.attr("class") !== "ops" && target.attr("class") !== "other"){
       if (flag){
         flag = false;
