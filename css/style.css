@@ -38,3 +38,7 @@ html, body {
   border-top: 20px solid #b8bec6;
   margin: auto;
 }
+
+.hide {
+  display: none;
+}

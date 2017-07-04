@@ -20,9 +20,15 @@
 <div class="container center-bg">
   <h1 class="text-center">Javascript Calculator</h1>
   <h5 class="text-center">By: Kim Nguyen</h5>
+  <div class="alert alert-warning hide" id="warning">
+  
+  </div>
   <div class="center-block" id="calculator">
     <div id="screen">
-      <span id="output">123</span>
+      <span id="output">0</span>
+    </div>
+    <div id="screen2">
+      <span id="fullOutput"></span>
     </div>
     <div id="buttons">
       <a class="btn btn-danger button other" id="AC">AC</a>
@@ -30,27 +36,27 @@
       <a class="btn btn-warning button other" id="backspace">
         <i class="material-icons bkspc">backspace</i>
       </a>
-      <a class="btn btn-info button ops" id="divide">÷</a>
+      <a class="btn btn-info button ops" id="/">÷</a>
       <br/>
       <a class="btn btn-primary button num" id="7">7</a>
       <a class="btn btn-primary button num" id="8">8</a>
       <a class="btn btn-primary button num" id="9">9</a>
-      <a class="btn btn-info button ops" id="multiply">×</a>
+      <a class="btn btn-info button ops" id="*">×</a>
       <br/>
       <a class="btn btn-primary button num" id="4">4</a>
       <a class="btn btn-primary button num" id="5">5</a>
       <a class="btn btn-primary button num" id="6">6</a>
-      <a class="btn btn-info button ops" id="subtract">-</a>
+      <a class="btn btn-info button ops" id="-">-</a>
       <br/>
       <a class="btn btn-primary button num" id="1">1</a>
       <a class="btn btn-primary button num" id="2">2</a>
       <a class="btn btn-primary button num" id="3">3</a>
-      <a class="btn btn-info button ops" id="add">+</a>
+      <a class="btn btn-info button ops" id="+">+</a>
       <br/>
       <a class="btn btn-info button other" id="toggleNegative">+/-</a>
       <a class="btn btn-primary button num" id="0">0</a>
-      <a class="btn btn-primary button num" id="decimal">.</a>
-      <a class="btn btn-info button other" id="equals">=</a>
+      <a class="btn btn-primary button num" id=".">.</a>
+      <a class="btn btn-info button other" id="eval">=</a>
 
 
     </div>

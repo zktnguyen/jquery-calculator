@@ -2,67 +2,67 @@
   var screen = $("#screen"),
       output = $("#output"),
       full = $("#fullOutput"),
+      warning = $("#warning"),
       input = $("a");
+  
+  var outputString = '';
+  var calculatedResult = 0;
   var fullOutput = [];
-  var outputString = "";
-  
-  function showFullOutput() {
-    var str = fullOutput.join(" ");
-    full.html(str);
-  }
-  
+  var curOp = "";
+
+
+
   function showOutput() {
-    checkOutput();
-    output.html(outputString);
-  }
-  
-  function checkOutput() {
     if (outputString.length > 12){
       screen.css("font-size", "2.0em");
     }
     if (outputString.length > 24){
-      screen.css("font-size", "1.3em");
+      warning.removeClass("hide");
+      warning.html("<strong>Warning! </strong> Too many digits.");
+      outputString = outputString.substring(0, 24);
     }
+    output.html(outputString);
+    var str = fullOutput.join(" ");
+    full.html(str);
   }
-  
+
   function clearScreen(option) {
-    outputString = "";
     if (option === "AC"){
       fullOutput = [];
+      cachedOperations = [];
     }
-    else {
+    else if (option === "CE" && outputString === ""){
       fullOutput.pop();
     }
-    
-  }
-
-  function toggleNegative() {
-
+    outputString = "";
+    showOutput();
   }
 
   function evaluate() {
 
   }
 
-  function calculate() {
-    
-  }
-
-  input.on("click",function(e){
+  input.on("click", function(e){
     var target = $(e.target);
     if (target.hasClass('num')){
       var val = target.html();
       outputString += val;
+      showOutput();
     }
-    else if (target.hasClass('ops')) {
-      var op = target.html();
-      fullOutput.push(output.html());
-      calculate(op);
-    }
-
-    else if (target.hasClass('other')) {
-      var op = target.attr('id');
-      switch(op){
+    else if (outputString !== "") {
+      fullOutput.push(outputString);
+      var operation = target.attr('id');
+      if (fullOutput.length < 2){
+        calculatedResult = parseFloat(outputString);
+      }
+      if (target.hasClass('ops')){
+        fullOutput.push(operation);
+        showOutput();
+        outputString = "";
+        curOp = operation;
+      }
+      else if (target.hasClass('other')){
+        switch(operation){
         case 'AC':
           clearScreen('AC');
           break;
@@ -70,18 +70,28 @@
           clearScreen('CE');
           break;
         case 'backspace':
-          outputString = outputString.substring(0,  outputString.length - 1);
+          outputString = outputString.substring(0, outputString.length - 1);
+          showOutput();
           break;
-        case '+/-':
+        case 'toggleNegative':
           toggleNegative();
           break;
-        case '=':
-          evaluate();
+        case 'eval':
           break;
+        }
+      }
+      showOutput();
+      outputString= "";
+    }
+    else {
+      var clear = target.attr('id');
+      if (clear === "AC"){
+        clearScreen("AC");
+      }
+      else if (clear === "CE"){
+        clearScreen("CE");
       }
     }
-    showOutput();
-    showFullOutput();
   });
   
   
