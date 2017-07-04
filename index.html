@@ -1,52 +1,66 @@
 <!DOCTYPE html>
-<html>
-<title>Simple Calculator</title>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="main.css" />
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>JS Calculator</title>
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+
+</head>
 
 <body>
-  <div class="col-md-6">
-    <div id="calculator">
-      <div id="screen">
-        0
-      </div>
-      <table class="inputs">
-        <td class="other" id="clear">AC</td>
-        <td class="other" id="negpos">+/-</td>
-        <td class="other" id="percentage">%</td>
-        <td class="ops" id="divide">/</td>
-      </tr>
-      <tr>
-        <td>7</td>
-        <td>8</td>
-        <td>9</td>
-        <td class="ops" id="multiply">X</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>5</td>
-        <td>6</td>
-        <td class="ops" id="subtract">-</td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td class="ops" id="plus">+</td>
-      </tr>
-      <tr>
-        <td id="zero">0</td>
-        <td>
-        </td>
-        <td id="decimal">.</td>
-        <td class="ops" id="eval">=</td>
-      </tr>
-      </table>
-    </div>
 
+<div class="container center-bg">
+  <h1 class="text-center">Javascript Calculator</h1>
+  <h5 class="text-center">By: Kim Nguyen</h5>
+  <div class="center-block" id="calculator">
+    <div id="screen">
+      <span id="output">123</span>
+    </div>
+    <div id="buttons">
+      <a class="btn btn-danger button other" id="AC">AC</a>
+      <a class="btn btn-danger button other" id="CE">CE</a>
+      <a class="btn btn-warning button other" id="backspace">
+        <i class="material-icons bkspc">backspace</i>
+      </a>
+      <a class="btn btn-info button ops" id="divide">÷</a>
+      <br/>
+      <a class="btn btn-primary button num" id="7">7</a>
+      <a class="btn btn-primary button num" id="8">8</a>
+      <a class="btn btn-primary button num" id="9">9</a>
+      <a class="btn btn-info button ops" id="multiply">×</a>
+      <br/>
+      <a class="btn btn-primary button num" id="4">4</a>
+      <a class="btn btn-primary button num" id="5">5</a>
+      <a class="btn btn-primary button num" id="6">6</a>
+      <a class="btn btn-info button ops" id="subtract">-</a>
+      <br/>
+      <a class="btn btn-primary button num" id="1">1</a>
+      <a class="btn btn-primary button num" id="2">2</a>
+      <a class="btn btn-primary button num" id="3">3</a>
+      <a class="btn btn-info button ops" id="add">+</a>
+      <br/>
+      <a class="btn btn-info button other" id="toggleNegative">+/-</a>
+      <a class="btn btn-primary button num" id="0">0</a>
+      <a class="btn btn-primary button num" id="decimal">.</a>
+      <a class="btn btn-info button other" id="equals">=</a>
+
+
+    </div>
   </div>
 
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+
+    <script src="js/script.js"></script>
+
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="main.js"></script>
 </html>

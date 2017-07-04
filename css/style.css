@@ -1,0 +1,40 @@
+html, body {
+  background-color: #598fd6;
+  font-family: 'Inconsolata', monospace;
+}
+
+.center-bg {
+  background-color: white;
+}
+.bkspc {
+  font-size: 1em;
+}
+.button {
+  width: 70px;
+  padding: 10px;
+  margin: 5px;
+  font-size: 1.5em;
+}
+
+#calculator {
+
+  width: 400px;
+  background-color: #b8bec6;
+  height: 500px;
+  margin: 60px auto 100px auto;
+}
+
+#buttons {
+  margin: 25px 5px 10px 25px;
+}
+#screen {
+  text-align: right;
+  font-size: 3.5em;
+  width: 350px;
+  height: 120px;
+  padding: 25px 20px 10px 20px;
+  background-color: white;
+  display: block;
+  border-top: 20px solid #b8bec6;
+  margin: auto;
+}
