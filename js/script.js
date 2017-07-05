@@ -6,11 +6,11 @@
       input = $("a");
   
   var outputString = '';
-  var calculatedResult = 0;
+  var calculatedResult = (-Number.MAX_VALUE) * 2;
   var fullOutput = [];
   var curOp = "";
-
-
+  var operators = ['+', '-', '*', '/'];
+  var curIndex = 0;
 
   function showOutput() {
     if (outputString.length > 12){
@@ -29,7 +29,9 @@
   function clearScreen(option) {
     if (option === "AC"){
       fullOutput = [];
-      cachedOperations = [];
+      calculatedResult = (-Number.MAX_VALUE) * 2;
+      curOp = '';
+      curIndex = 0;
     }
     else if (option === "CE" && outputString === ""){
       fullOutput.pop();
@@ -39,26 +41,57 @@
   }
 
   function evaluate() {
-
+    var operand2 = parseFloat(fullOutput[fullOutput.length - 1]) || parseFloat(fullOutput[fullOutput.length - 2]);
+    console.log(fullOutput, calculatedResult);
+    switch(curOp){
+      case '+':
+        calculatedResult += operand2;
+        break;
+      case '-':
+        calculatedResult -= operand2;
+        break;
+      case '*':
+        calculatedResult *= operand2;
+        break;
+      case '/':
+        calculatedResult /= operand2;
+        break;
+    }
+    outputString = calculatedResult;
+    showOutput();
   }
 
+// [2, +, 3, +, 6, =] = 11
   input.on("click", function(e){
     var target = $(e.target);
+    var flag = false;
     if (target.hasClass('num')){
       var val = target.html();
       outputString += val;
       showOutput();
     }
-    else if (outputString !== "") {
-      fullOutput.push(outputString);
+    else if (outputString !== "" || calculatedResult !== Number.NEGATIVE_INFINITY) {
+      if (outputString !== ""){
+        fullOutput.push(outputString);
+        console.log('debug',fullOutput);
+        curIndex++;
+      }
       var operation = target.attr('id');
-      if (fullOutput.length < 2){
+      if (fullOutput.length < 2 && calculatedResult === Number.NEGATIVE_INFINITY){
         calculatedResult = parseFloat(outputString);
       }
       if (target.hasClass('ops')){
+        if (operators.includes(fullOutput[fullOutput.length - 1])){
+          fullOutput.pop();
+          curIndex--;
+        }
+        else if (fullOutput.length >= 3 && curIndex === fullOutput.length){
+          evaluate();
+        }
+        
         fullOutput.push(operation);
+        curIndex++;
         showOutput();
-        outputString = "";
         curOp = operation;
       }
       else if (target.hasClass('other')){
@@ -77,8 +110,25 @@
           toggleNegative();
           break;
         case 'eval':
+          if (operators.includes(fullOutput[fullOutput.length - 1]) || outputString === ""){
+            var pop = fullOutput.pop();
+            outputString = calculatedResult;
+            curIndex--;
+          }
+          else if (fullOutput.length < 2){
+            outputString = calculatedResult;
+            console.log("oops", fullOutput);
+          }
+          else if (curIndex === fullOutput.length){
+            evaluate();
+          }
+          fullOutput = [];
+          fullOutput.push(calculatedResult.toString());
+          curIndex = 1;
+          curOp = '';
           break;
         }
+        
       }
       showOutput();
       outputString= "";
