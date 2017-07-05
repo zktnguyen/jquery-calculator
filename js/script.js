@@ -42,7 +42,6 @@
 
   function evaluate() {
     var operand2 = parseFloat(fullOutput[fullOutput.length - 1]) || parseFloat(fullOutput[fullOutput.length - 2]);
-    console.log(fullOutput, calculatedResult);
     switch(curOp){
       case '+':
         calculatedResult += operand2;
@@ -73,7 +72,6 @@
     else if (outputString !== "" || calculatedResult !== Number.NEGATIVE_INFINITY) {
       if (outputString !== ""){
         fullOutput.push(outputString);
-        console.log('debug',fullOutput);
         curIndex++;
       }
       var operation = target.attr('id');
@@ -117,7 +115,6 @@
           }
           else if (fullOutput.length < 2){
             outputString = calculatedResult;
-            console.log("oops", fullOutput);
           }
           else if (curIndex === fullOutput.length){
             evaluate();
