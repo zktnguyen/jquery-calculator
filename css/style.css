@@ -38,6 +38,7 @@ html, body {
   display: block;
   border-top: 20px solid #b8bec6;
   margin: 0px auto 0px auto;
+  overflow: auto;
 }
 
 #screen2 {

@@ -13,13 +13,16 @@
   var curIndex = 0;
 
   function showOutput() {
-    if (outputString.length > 12){
-      screen.css("font-size", "2.0em");
-    }
+    
     if (outputString.length > 24){
       warning.removeClass("hide");
       warning.html("<strong>Warning! </strong> Too many digits.");
+      screen.css("font-size", "2.0em");
       outputString = outputString.substring(0, 24);
+    }
+    else if (outputString.length > 12){
+      console.log("change size");
+      screen.css("font-size", "2.0em");
     }
     output.html(outputString);
     var str = fullOutput.join(" ");
@@ -36,6 +39,8 @@
     else if (option === "CE" && outputString === ""){
       fullOutput.pop();
     }
+
+    screen.css("font-size", "3.5em");
     outputString = "";
     showOutput();
   }
@@ -66,8 +71,11 @@
     var flag = false;
     if (target.hasClass('num')){
       var val = target.html();
-      outputString += val;
-      showOutput();
+      if (val === "." && outputString.indexOf(".") !== -1);
+      else {
+        outputString += val;
+        showOutput();
+      }
     }
     else if (outputString !== "" || calculatedResult !== Number.NEGATIVE_INFINITY) {
       if (outputString !== ""){
